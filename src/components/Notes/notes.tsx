@@ -1,21 +1,23 @@
 import "./notes.css";
 
 import React from "react";
-import Note from "../Note";
+import { NoteElement, type Note } from "../Note";
 
-const Notes = (): JSX.Element => {
+interface AllNotesProps {
+  notes: Note[];
+}
+
+const Notes = ({ notes }: AllNotesProps): JSX.Element => {
   return (
     <div className="notes">
-      <Note
-        title="My first note!"
-        content="This is my very first note in my new notes application!"
-        important={false}
-      />
-      <Note
-        title="TypeScript is great"
-        content="I've been learning TypeScript for the past month and I really like it! I'm excited to keep making more projects with it."
-        important={false}
-      />
+      {notes.map((note) => (
+        <NoteElement
+          key={crypto.randomUUID()}
+          title={note.title}
+          content={note.content}
+          important={note.important}
+        />
+      ))}
     </div>
   );
 };

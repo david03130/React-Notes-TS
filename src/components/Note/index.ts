@@ -1,3 +1,4 @@
-import Note from "./note";
+import NoteElement from "./note-element";
+import type Note from "./note";
 
-export default Note;
+export { NoteElement, Note };
