@@ -1,7 +1,7 @@
 import "./notes.css";
 
 import React from "react";
-import Note from "../Note/note";
+import Note from "../Note";
 
 const Notes = (): JSX.Element => {
   return (
