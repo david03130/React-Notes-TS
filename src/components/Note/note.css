@@ -1,6 +1,7 @@
 .note {
   display: inline-block;
   width: 240px;
+  height: fit-content;
   margin: 10px;
   padding: 10px;
   background-color: antiquewhite;
