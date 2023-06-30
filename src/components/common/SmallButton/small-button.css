@@ -1,0 +1,12 @@
+a {
+  display: flex;
+  /* X Axis */
+  justify-content: center;
+  /* Y Axis */
+  align-items: center;
+  text-decoration: none;
+  background-color: aquamarine;
+  width: 50px;
+  height: 50px;
+  /* text-align: center; */
+}
