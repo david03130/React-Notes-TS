@@ -1,9 +1,9 @@
 import "./home.css";
 
 import React from "react";
-import { Notes } from "../../components/Notes";
-import { MainMenu } from "../../layout/MainMenu";
-import { type Note } from "../../components/Note";
+import { Notes } from "../../components/notes";
+import { MainMenu } from "../../layout/main-menu";
+import { type Note } from "../../components/note";
 
 const notes: Note[] = [
   {

@@ -1,6 +1,6 @@
 import "./main-menu.css";
 
-import { SmallButton } from "../../components/common/SmallButton";
+import { SmallButton } from "../../components/common/small-button";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 
 const MainMenu = (): JSX.Element => {

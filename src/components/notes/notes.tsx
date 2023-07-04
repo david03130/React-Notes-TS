@@ -1,7 +1,7 @@
 import "./notes.css";
 
 import React from "react";
-import { NoteElement, type Note } from "../Note";
+import { NoteElement, type Note } from "../note";
 
 interface AllNotesProps {
   notes: Note[];
