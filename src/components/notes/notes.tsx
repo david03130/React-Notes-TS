@@ -12,7 +12,8 @@ const Notes = ({ notes }: AllNotesProps): JSX.Element => {
     <div className="notes">
       {notes.map((note) => (
         <NoteElement
-          key={crypto.randomUUID()}
+          key={note.id}
+          id={note.id}
           title={note.title}
           content={note.content}
           important={note.important}
