@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Note } from "../components/note";
 
-const baseUrl = "/api/notes";
+const baseUrl = "http://localhost:3001/api/notes";
 
 const getAll = (): Promise<Note[]> => {
   const request = axios.get<Note[]>(baseUrl);
