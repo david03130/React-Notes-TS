@@ -10,7 +10,7 @@ interface SmallButtonProps {
 
 const SmallButton = ({ icon, clickEvent }: SmallButtonProps): JSX.Element => {
   return (
-    <a onClick={clickEvent} href="">
+    <a className="smallButton" onClick={clickEvent} href="">
       <FontAwesomeIcon icon={icon} />
     </a>
   );

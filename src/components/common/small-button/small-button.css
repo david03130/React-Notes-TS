@@ -1,4 +1,4 @@
-a {
+.smallButton {
   color: black;
   background-color: var(--highlight-color);
   display: flex;
