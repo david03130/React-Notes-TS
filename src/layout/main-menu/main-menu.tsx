@@ -20,10 +20,12 @@ const MainMenu = (): JSX.Element => {
       <h1>Notes</h1>
       <SmallButton icon={faAdd} clickEvent={buttonHandler} />
       <Modal
-        children={<p>Hello world!</p>}
+        modalTitle="Add new note"
         isOpen={visibleModal}
         handleClose={hideModal}
-      />
+      >
+        <p>Hello world!</p>
+      </Modal>
     </div>
   );
 };

@@ -1,24 +1,40 @@
+h3 {
+  margin: 0px;
+}
+
 .modal {
   position: fixed;
+  padding: 40px 20px 20px;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.533);
+  background-color: rgba(0, 0, 0, 0.412);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
-  z-index: 999;
-  padding: 40px 20px 20px;
+  /* z-index: 999; */
+}
+
+.modal__body {
+  width: 70%;
+  height: 70%;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  font-size: 2rem;
+}
+
+.modal__header > div {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .modal__content {
-  width: 70%;
-  height: 70%;
-  background-color: #a5b5d4;
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
 }
