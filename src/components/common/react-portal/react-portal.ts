@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 interface ReactPortalProps {
@@ -11,15 +11,19 @@ const ReactPortal = ({
   wrapperId,
 }: ReactPortalProps): React.ReactPortal | null => {
   const [wrapperElement, setWrapperElement] = useState<Element>();
+  let element: HTMLElement | null;
 
-  const element = document.getElementById(wrapperId);
+  element = document.getElementById(wrapperId);
 
   if (!element) {
-    throw new Error("Error in the ReactPoral component.");
-  } else {
-    setWrapperElement(element);
-    return createPortal(children, element);
+    throw new Error("Error in the ReactPortal component.");
   }
+  
+  useEffect(() => {
+    setWrapperElement(element!);
+  }, []);
+
+  return createPortal(children, element);
 };
 
 const createWrapper = (wrapperId: string): HTMLDivElement => {
