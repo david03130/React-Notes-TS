@@ -10,15 +10,6 @@ const NoteForm = ({
   modalVisibility,
   handleClose,
 }: NoteFormProps): JSX.Element => {
-  const TextInput = ({ inputTitle }: { inputTitle: string }) => {
-    return (
-      <div className="modal__text-input">
-        <h6>{inputTitle}</h6>
-        <input type="text" />
-      </div>
-    );
-  };
-
   return (
     <Modal
       modalTitle="Add new note"
@@ -26,8 +17,14 @@ const NoteForm = ({
       handleClose={handleClose}
     >
       <div className="noteForm">
-        <TextInput inputTitle="Title" />
-        <TextInput inputTitle="Content" />
+        <div className="note-input-area note__text-input">
+          <h6>Title</h6>
+          <input type="text" />
+        </div>
+        <div className="note-input-area note__textarea">
+          <h6>Content</h6>
+          <textarea></textarea>
+        </div>
       </div>
     </Modal>
   );
