@@ -28,7 +28,12 @@ p {
 }
 
 :root {
+  /* Colors */
   --bg-primary-color: white;
   --bg-secondary-color: antiquewhite;
   --highlight-color: rgb(243, 202, 148);
+  
+  /* Fonts */
+  --text-normal: 1.2rem;
+  --text-small: 1rem;
 }
