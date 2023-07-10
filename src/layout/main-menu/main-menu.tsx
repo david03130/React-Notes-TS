@@ -3,7 +3,7 @@ import "./main-menu.css";
 import { SmallButton } from "../../components/common/small-button";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { Modal } from "../../components/common/modal";
+import { NoteForm } from "../../components/note-form";
 
 const MainMenu = (): JSX.Element => {
   const [visibleModal, setVisibleModal] = useState(false);
@@ -19,13 +19,7 @@ const MainMenu = (): JSX.Element => {
     <div className="main-menu">
       <h1>Notes</h1>
       <SmallButton icon={faAdd} clickEvent={buttonHandler} />
-      <Modal
-        modalTitle="Add new note"
-        isOpen={visibleModal}
-        handleClose={hideModal}
-      >
-        <p>Hello world!</p>
-      </Modal>
+      <NoteForm modalVisibility={visibleModal} handleClose={hideModal} />
     </div>
   );
 };
