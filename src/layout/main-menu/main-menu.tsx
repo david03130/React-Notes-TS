@@ -10,16 +10,30 @@ const MainMenu = (): JSX.Element => {
   const showModal = () => setVisibleModal(true);
   const hideModal = () => setVisibleModal(false);
 
-  const buttonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const closeButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     showModal();
+  };
+
+  const closeNoteForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    hideModal();
+  };
+
+  const handleNoteSave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    console.log("Save note!");
   };
 
   return (
     <div className="main-menu">
       <h1>Notes</h1>
-      <SmallButton icon={faAdd} clickEvent={buttonHandler} />
-      <NoteForm modalVisibility={visibleModal} handleClose={hideModal} />
+      <SmallButton icon={faAdd} clickEvent={closeButtonHandler} />
+      <NoteForm
+        modalVisibility={visibleModal}
+        handleClose={closeNoteForm}
+        handleSave={handleNoteSave}
+      />
     </div>
   );
 };

@@ -3,18 +3,21 @@ import { Modal } from "../common/modal";
 
 interface NoteFormProps {
   modalVisibility: boolean;
-  handleClose: () => void;
+  handleClose: React.MouseEventHandler;
+  handleSave: React.MouseEventHandler;
 }
 
 const NoteForm = ({
   modalVisibility,
   handleClose,
+  handleSave,
 }: NoteFormProps): JSX.Element => {
   return (
     <Modal
       modalTitle="Add new note"
       isOpen={modalVisibility}
       handleClose={handleClose}
+      handleSave={handleSave}
     >
       <div className="noteForm">
         <div className="note-input-area note__text-input">

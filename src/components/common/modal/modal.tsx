@@ -1,14 +1,15 @@
 import "./modal.css";
 import { ReactPortal } from "../react-portal";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { SmallButton } from "../small-button";
+import { Button } from "../button";
 
 interface ModalProps {
   children: React.ReactNode;
   modalTitle: string;
   isOpen: boolean;
-  handleClose: () => void;
+  handleClose: React.MouseEventHandler;
+  handleSave: React.MouseEventHandler;
 }
 
 const Modal = ({
@@ -16,17 +17,11 @@ const Modal = ({
   modalTitle,
   isOpen,
   handleClose,
+  handleSave,
 }: ModalProps): JSX.Element | null => {
   if (!isOpen) {
     return null;
   }
-
-  const closeModalHandler = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
-    e.preventDefault();
-    handleClose();
-  };
 
   const ModalBody = (
     <div className="modal">
@@ -38,11 +33,15 @@ const Modal = ({
               icon={faClose}
               transparent={true}
               iconSize={"xs"}
-              clickEvent={closeModalHandler}
+              clickEvent={handleClose}
             />
           </div>
         </div>
         <div className="modal__content">{children}</div>
+        <hr className="modal__separator" />
+        <div className="modal__footer">
+          <Button text="Save" clickEvent={handleSave} />
+        </div>
       </div>
     </div>
   );

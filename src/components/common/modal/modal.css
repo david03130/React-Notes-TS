@@ -12,6 +12,12 @@
   /* z-index: 999; */
 }
 
+.modal__separator {
+  color: rgba(0, 0, 0, 0.415);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .modal__body {
   width: 70%;
   height: 70%;
@@ -42,4 +48,14 @@
 
 .modal__content {
   padding: 20px;
+}
+
+.modal__footer {
+  position: relative;
+  align-items: end;
+}
+
+.modal__footer > .button {
+  position: absolute;
+  bottom: 0;
 }
