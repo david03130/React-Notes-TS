@@ -1,6 +1,8 @@
 .note {
   display: inline-block;
-  width: 240px;
+  min-width: 260px;
+  max-width: 350px;
+  min-height: 130px;
   height: fit-content;
   margin: 10px;
   padding: 10px;
@@ -8,6 +10,12 @@
   border-width: 1;
   border-color: rgb(196, 168, 132);
   border-radius: 6px;
+  transition: transform 0.2s;
+}
+
+.note:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .note__title {
