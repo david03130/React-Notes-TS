@@ -1,4 +1,5 @@
 .notes {
   display: flex;
   padding: 10px;
+  flex-wrap: wrap;
 }
