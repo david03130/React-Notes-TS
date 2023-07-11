@@ -50,7 +50,7 @@
   padding: 20px;
 }
 
-.modal__footer {
+/* .modal__footer {
   position: relative;
   align-items: end;
 }
@@ -58,4 +58,4 @@
 .modal__footer > .button {
   position: absolute;
   bottom: 0;
-}
+} */
