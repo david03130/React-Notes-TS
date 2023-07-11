@@ -2,6 +2,7 @@ import "./note-form.css";
 import { Modal } from "../common/modal";
 import { useState } from "react";
 import { Note } from "../note";
+import NoteCalls from "../../services/note-calls";
 
 interface NoteFormProps {
   modalVisibility: boolean;
@@ -23,8 +24,14 @@ const NoteForm = ({
 
   const handleNoteSave = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    console.log("Save note!");
-    // handleClose(e);
+    NoteCalls.create(newNote)
+      .then(() => {
+        console.log("Note saved!");
+        handleClose(e);
+      })
+      .catch(() => {
+        throw new Error("Error when saving note1");
+      });
   };
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -35,6 +42,12 @@ const NoteForm = ({
     e: React.ChangeEvent<HTMLTextAreaElement>
   ): void => {
     setNewNote({ ...newNote, content: e.target.value });
+  };
+
+  const handleImportanceChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setNewNote({ ...newNote, important: e.target.checked });
   };
 
   return (
@@ -56,6 +69,14 @@ const NoteForm = ({
         <div className="note-input-area note__textarea">
           <h6>Content</h6>
           <textarea value={newNote.content} onChange={handleContentChange} />
+        </div>
+        <div className="note-input-area note__important-checkbox">
+          <input
+            type="checkbox"
+            checked={newNote.important}
+            onChange={handleImportanceChange}
+          />
+          <h6>Important</h6>
         </div>
       </div>
     </Modal>

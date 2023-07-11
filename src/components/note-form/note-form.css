@@ -21,6 +21,8 @@
 
 .note__textarea > textarea {
   font-size: var(--text-normal);
-  width: 99%;
-  height: 100%;
+}
+
+.note__important-checkbox {
+  display: flex;
 }
