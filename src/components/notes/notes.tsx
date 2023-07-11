@@ -1,22 +1,23 @@
 import "./notes.css";
 
-import React from "react";
 import { NoteElement, type Note } from "../note";
 
 interface AllNotesProps {
   notes: Note[];
+  noteDetailsEvent: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    note: Note
+  ) => void;
 }
 
-const Notes = ({ notes }: AllNotesProps): JSX.Element => {
+const Notes = ({ notes, noteDetailsEvent }: AllNotesProps): JSX.Element => {
   return (
     <div className="notes">
       {notes.map((note) => (
         <NoteElement
           key={note.id}
-          id={note.id}
-          title={note.title}
-          content={note.content}
-          important={note.important}
+          note={note}
+          noteDetailsEvent={noteDetailsEvent}
         />
       ))}
     </div>
