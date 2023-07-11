@@ -8,6 +8,7 @@ interface SmallButtonProps {
   iconSize?: SizeProp;
   transparent?: boolean;
   clickEvent: React.MouseEventHandler;
+  className?: string;
 }
 
 const SmallButton = ({
@@ -15,8 +16,9 @@ const SmallButton = ({
   iconSize,
   transparent,
   clickEvent,
+  className,
 }: SmallButtonProps): JSX.Element => {
-  let classes = "smallButton";
+  let classes = "smallButton " + className;
 
   if (!transparent) {
     classes += " colored";
