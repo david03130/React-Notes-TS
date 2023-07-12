@@ -1,6 +1,9 @@
+import "./note.css";
+
+import { faExclamation } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import type Note from "./note";
-import "./note.css";
 
 interface NoteElementProps {
   note: Note;
@@ -20,7 +23,17 @@ const NoteElement = ({
 
   return (
     <div className="note" onClick={clickEvent}>
-      <p className="note__title">{note.title}</p>
+      <div className="note__header">
+        <p className="note__header__title">{note.title}</p>
+        {note.important ? (
+          <FontAwesomeIcon
+            className="note__header__important"
+            icon={faExclamation}
+          />
+        ) : (
+          ""
+        )}
+      </div>
       <p className="note__content">{note.content}</p>
     </div>
   );

@@ -18,11 +18,23 @@
   cursor: pointer;
 }
 
-.note__title {
-  font-size: larger;
-  margin-top: 8px;
-  font-weight: bolder;
+.note__header {
+  display: flex;
+  justify-content: space-between;
   margin: 10px 10px 10px 0px;
+}
+
+.note__header__title {
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.note__header__important {
+  /* font-size: smaller; */
+  padding: 7px;
+  width: 15px;
+  border-radius: 200px;
+  background-color: var(--highlight-color);
 }
 
 .note__content {
