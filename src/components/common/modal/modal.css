@@ -19,8 +19,12 @@
 }
 
 .modal__body {
-  width: 70%;
-  height: 70%;
+  width: fit-content;
+  height: fit-content;
+  min-width: 50%;
+  min-height: 170px;
+  /* width: 50%;
+  height: 50%; */
   border-radius: 10px;
   background-color: white;
   color: black;

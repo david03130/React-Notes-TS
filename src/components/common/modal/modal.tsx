@@ -34,16 +34,16 @@ const Modal = ({
         <div className="modal__header">
           <div>
             <h3>{modalTitle}</h3>
-            <SmallButton
-              icon={faClose}
-              transparent={true}
-              iconSize={"xs"}
-              clickEvent={handleClose}
-            />
+              <SmallButton
+                icon={faClose}
+                transparent={true}
+                iconSize={"xs"}
+                clickEvent={handleClose}
+              />
+            </div>
           </div>
-        </div>
         <div className="modal__content">{children}</div>
-        <hr className="modal__separator" />
+        {modalButtons ? <hr className="modal__separator" /> : ""}
         <div className="modal__footer">
           {modalButtons?.sort(modalButtonSortAsc).map((button) => (
             <Button
