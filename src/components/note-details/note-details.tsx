@@ -17,9 +17,6 @@ const NoteDetails = ({
       modalTitle="Details"
       isOpen={modalVisibility}
       handleClose={handleClose}
-      // TODO: Realmente aquí no hay que guardar nada.
-      // TODO: Mirar manera de definir los botones del Modal.
-      handleSave={() => {}}
     >
       <p>{note.title}</p>
     </Modal>

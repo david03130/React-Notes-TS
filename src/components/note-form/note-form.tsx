@@ -3,6 +3,7 @@ import { Modal } from "../common/modal";
 import { useState } from "react";
 import { Note } from "../note";
 import NoteCalls from "../../services/note-calls";
+import { ModalButton } from "../common/modal";
 
 interface NoteFormProps {
   modalVisibility: boolean;
@@ -50,12 +51,18 @@ const NoteForm = ({
     setNewNote({ ...newNote, important: e.target.checked });
   };
 
+  const modalSaveButton: ModalButton = {
+    position: 1,
+    text: "Save",
+    clickEvent: handleNoteSave,
+  };
+
   return (
     <Modal
       modalTitle="Add new note"
       isOpen={modalVisibility}
       handleClose={handleClose}
-      handleSave={handleNoteSave}
+      modalButtons={[modalSaveButton]}
     >
       <div className="noteForm">
         <div className="note-input-area note__text-input">
