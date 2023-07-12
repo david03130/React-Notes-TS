@@ -4,12 +4,17 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { SmallButton } from "../small-button";
 import { Button } from "../button";
 import { ModalButton } from "./";
+import {
+  FontAwesomeIcon,
+  FontAwesomeIconProps,
+} from "@fortawesome/react-fontawesome";
 
 interface ModalProps {
   children: React.ReactNode;
   modalTitle: string;
   isOpen: boolean;
   modalButtons?: ModalButton[];
+  extraIcons?: FontAwesomeIconProps[];
   handleClose: React.MouseEventHandler;
 }
 
@@ -19,6 +24,7 @@ const Modal = ({
   isOpen,
   modalButtons,
   handleClose,
+  extraIcons,
 }: ModalProps): JSX.Element | null => {
   if (!isOpen) {
     return null;
@@ -32,16 +38,28 @@ const Modal = ({
     <div className="modal">
       <div className="modal__body">
         <div className="modal__header">
-          <div>
+          <div className="modal__header__left-section">
             <h3>{modalTitle}</h3>
-              <SmallButton
-                icon={faClose}
-                transparent={true}
-                iconSize={"xs"}
-                clickEvent={handleClose}
-              />
-            </div>
+            {extraIcons ? (
+              <div className="modal__header__left-section__icons">
+                {extraIcons.map((icon) => (
+                  <FontAwesomeIcon
+                    icon={icon.icon}
+                    className={icon.className}
+                  />
+                ))}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
+          <SmallButton
+            icon={faClose}
+            transparent={true}
+            iconSize={"xs"}
+            clickEvent={handleClose}
+          />
+        </div>
         <div className="modal__content">{children}</div>
         {modalButtons ? <hr className="modal__separator" /> : ""}
         <div className="modal__footer">

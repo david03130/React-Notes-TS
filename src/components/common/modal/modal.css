@@ -35,9 +35,6 @@
   background-color: var(--bg-secondary-color);
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-}
-
-.modal__header > div {
   padding: 15px;
   margin: 0px;
   display: flex;
@@ -45,9 +42,17 @@
   justify-content: space-between;
 }
 
+.modal__header__left-section {
+  display: flex;
+}
+
 .modal__header > div > h3 {
   margin: 0px;
   font-size: smaller;
+}
+
+.modal__header__left-section__icons {
+  margin-left: 15px;
 }
 
 .modal__content {
