@@ -14,11 +14,11 @@ const NoteDetails = ({
 }: NoteDetailsProps) => {
   return (
     <Modal
-      modalTitle="Details"
+      modalTitle={note.title}
       isOpen={modalVisibility}
       handleClose={handleClose}
     >
-      <p>{note.title}</p>
+      <p>{note.content}</p>
     </Modal>
   );
 };
