@@ -1,6 +1,6 @@
 import "./button.css";
 
-interface ButtonProps {
+export interface ButtonProps {
   text: string;
   clickEvent: React.MouseEventHandler;
 }
