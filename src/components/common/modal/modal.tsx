@@ -3,25 +3,30 @@ import { ReactPortal } from "../react-portal";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { SmallButton } from "../small-button";
 import { Button } from "../button";
+import { ModalButton } from "./";
 
 interface ModalProps {
   children: React.ReactNode;
   modalTitle: string;
   isOpen: boolean;
+  modalButtons?: ModalButton[];
   handleClose: React.MouseEventHandler;
-  handleSave: React.MouseEventHandler;
 }
 
 const Modal = ({
   children,
   modalTitle,
   isOpen,
+  modalButtons,
   handleClose,
-  handleSave,
 }: ModalProps): JSX.Element | null => {
   if (!isOpen) {
     return null;
   }
+
+  const modalButtonSortAsc = (a: ModalButton, b: ModalButton) => {
+    return a.position - b.position;
+  };
 
   const ModalBody = (
     <div className="modal">
@@ -40,7 +45,13 @@ const Modal = ({
         <div className="modal__content">{children}</div>
         <hr className="modal__separator" />
         <div className="modal__footer">
-          <Button text="Save" clickEvent={handleSave} />
+          {modalButtons?.sort(modalButtonSortAsc).map((button) => (
+            <Button
+              key={crypto.randomUUID()}
+              text={button.text}
+              clickEvent={button.clickEvent}
+            />
+          ))}
         </div>
       </div>
     </div>
