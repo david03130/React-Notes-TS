@@ -1,5 +1,5 @@
 import { ButtonProps } from "../button";
 
-export interface ModalButton extends ButtonProps {
+export interface ModalActionButton extends ButtonProps {
   position: number;
 }

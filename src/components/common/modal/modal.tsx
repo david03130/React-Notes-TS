@@ -3,7 +3,7 @@ import { ReactPortal } from "../react-portal";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { SmallButton } from "../small-button";
 import { Button } from "../button";
-import { ModalButton } from "./";
+import { ModalActionButton } from "./";
 import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
@@ -13,7 +13,7 @@ interface ModalProps {
   children: React.ReactNode;
   modalTitle: string;
   isOpen: boolean;
-  modalButtons?: ModalButton[];
+  modalButtons?: ModalActionButton[];
   extraIcons?: FontAwesomeIconProps[];
   handleClose: React.MouseEventHandler;
 }
@@ -30,7 +30,7 @@ const Modal = ({
     return null;
   }
 
-  const modalButtonSortAsc = (a: ModalButton, b: ModalButton) => {
+  const modalButtonSortAsc = (a: ModalActionButton, b: ModalActionButton) => {
     return a.position - b.position;
   };
 
@@ -53,12 +53,12 @@ const Modal = ({
               ""
             )}
           </div>
-          <SmallButton
-            icon={faClose}
-            transparent={true}
-            iconSize={"xs"}
-            clickEvent={handleClose}
-          />
+            <SmallButton
+              icon={faClose}
+              transparent={true}
+              iconSize={"xs"}
+              clickEvent={handleClose}
+            />
         </div>
         <div className="modal__content">{children}</div>
         {modalButtons ? <hr className="modal__separator" /> : ""}

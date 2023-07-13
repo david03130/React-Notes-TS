@@ -3,7 +3,7 @@ import { Modal } from "../common/modal";
 import { useState } from "react";
 import { Note } from "../note";
 import NoteCalls from "../../services/note-calls";
-import { ModalButton } from "../common/modal";
+import { ModalActionButton } from "../common/modal";
 
 interface NoteFormProps {
   modalVisibility: boolean;
@@ -51,7 +51,7 @@ const NoteForm = ({
     setNewNote({ ...newNote, important: e.target.checked });
   };
 
-  const modalSaveButton: ModalButton = {
+  const modalSaveButton: ModalActionButton = {
     position: 1,
     text: "Save",
     clickEvent: handleNoteSave,

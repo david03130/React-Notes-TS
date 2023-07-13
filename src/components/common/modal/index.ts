@@ -1,4 +1,4 @@
 import Modal from "./modal";
-import { ModalButton } from "./modal-button";
+import { ModalActionButton } from "./modal-action-button";
 
-export { Modal, type ModalButton };
+export { Modal, type ModalActionButton };
