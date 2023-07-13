@@ -1,3 +1,3 @@
-import SmallButton from "./small-button";
+import SmallButton, { SmallButtonProps } from "./small-button";
 
-export { SmallButton };
+export { SmallButton, type SmallButtonProps };

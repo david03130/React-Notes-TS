@@ -3,7 +3,7 @@ import "./small-button.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { SizeProp } from "@fortawesome/fontawesome-svg-core";
-interface SmallButtonProps {
+export interface SmallButtonProps {
   icon: IconDefinition;
   iconSize?: SizeProp;
   transparent?: boolean;
