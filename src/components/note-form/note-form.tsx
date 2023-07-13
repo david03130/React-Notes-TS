@@ -57,6 +57,12 @@ const NoteForm = ({
     clickEvent: handleNoteSave,
   };
 
+  // const modalTestButton: ModalActionButton = {
+  //   position: 2,
+  //   text: "Test",
+  //   clickEvent: handleNoteSave,
+  // };
+
   return (
     <Modal
       modalTitle="Add new note"
