@@ -42,8 +42,9 @@
   justify-content: space-between;
 }
 
-.modal__header__left-section {
+.modal__header__left-section, .modal__header__right-section {
   display: flex;
+  /* padding: 10px; */
 }
 
 .modal__header > div > h3 {

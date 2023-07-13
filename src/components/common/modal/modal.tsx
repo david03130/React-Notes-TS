@@ -8,7 +8,7 @@ import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from "@fortawesome/react-fontawesome";
-import { ModalSmallButton } from "./modal-small-button";
+import { ModalSmallButton } from "./";
 
 interface ModalProps {
   children: React.ReactNode;
@@ -49,6 +49,7 @@ const Modal = ({
                   <FontAwesomeIcon
                     icon={icon.icon}
                     className={icon.className}
+                    key={crypto.randomUUID()}
                   />
                 ))}
               </div>
