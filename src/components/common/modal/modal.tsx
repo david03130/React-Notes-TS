@@ -8,6 +8,7 @@ import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from "@fortawesome/react-fontawesome";
+import { ModalSmallButton } from "./modal-small-button";
 
 interface ModalProps {
   children: React.ReactNode;
@@ -15,6 +16,7 @@ interface ModalProps {
   isOpen: boolean;
   modalButtons?: ModalActionButton[];
   extraIcons?: FontAwesomeIconProps[];
+  extraSmallButtons?: ModalSmallButton[];
   handleClose: React.MouseEventHandler;
 }
 
@@ -25,12 +27,13 @@ const Modal = ({
   modalButtons,
   handleClose,
   extraIcons,
+  extraSmallButtons,
 }: ModalProps): JSX.Element | null => {
   if (!isOpen) {
     return null;
   }
 
-  const modalButtonSortAsc = (a: ModalActionButton, b: ModalActionButton) => {
+  const buttonsSortAsc = <T extends { position: number }>(a: T, b: T) => {
     return a.position - b.position;
   };
 
@@ -53,21 +56,37 @@ const Modal = ({
               ""
             )}
           </div>
+          <div className="modal__header__right-section">
+            {extraSmallButtons
+              ? extraSmallButtons
+                  .sort(buttonsSortAsc)
+                  .map((smallButton) => (
+                    <SmallButton
+                      icon={smallButton.icon}
+                      clickEvent={smallButton.clickEvent}
+                      transparent={smallButton.transparent}
+                      className={smallButton.className}
+                      iconSize={smallButton.iconSize}
+                      key={crypto.randomUUID()}
+                    />
+                  ))
+              : ""}
             <SmallButton
               icon={faClose}
               transparent={true}
               iconSize={"xs"}
               clickEvent={handleClose}
             />
+          </div>
         </div>
         <div className="modal__content">{children}</div>
         {modalButtons ? <hr className="modal__separator" /> : ""}
         <div className="modal__footer">
-          {modalButtons?.sort(modalButtonSortAsc).map((button) => (
+          {modalButtons?.sort(buttonsSortAsc).map((button) => (
             <Button
-              key={crypto.randomUUID()}
               text={button.text}
               clickEvent={button.clickEvent}
+              key={crypto.randomUUID()}
             />
           ))}
         </div>
