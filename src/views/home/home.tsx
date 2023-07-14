@@ -44,7 +44,7 @@ const Home = (): JSX.Element => {
   return (
     <div className="home">
       <MainMenu />
-      <Notes notes={notes} noteDetailsEvent={openNoteDetails} />
+      <Notes noteDetailsEvent={openNoteDetails} />
       <NoteDetails
         modalVisibility={noteDetailsVisibility}
         handleClose={closeNoteDetails}

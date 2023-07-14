@@ -8,12 +8,12 @@ interface NoteReducer {
 }
 
 const initialState: NoteReducer = {
-  entities: [],
+  entities: [{ id: 1, title: "Test", content: "holaaa", important: true }],
   status: null,
 };
 
 const notesSlice = createSlice({
-  name: "",
+  name: "notes",
   initialState,
   reducers: {
     noteAdded(state, action) {
@@ -21,5 +21,7 @@ const notesSlice = createSlice({
     },
   },
 });
+
+export const { noteAdded } = notesSlice.actions;
 
 export default notesSlice.reducer;

@@ -1,16 +1,20 @@
 import "./notes.css";
 
+import { useSelector } from "react-redux";
+// import { useSelector, UseSelector } from "react-redux/es/hooks/useSelector";
 import { NoteElement, type Note } from "../note";
+import { noteAdded } from "../../store/reducers/notes-slice";
+import { useAppSelector } from "../../hooks/reduxHooks";
 
 interface AllNotesProps {
-  notes: Note[];
   noteDetailsEvent: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     note: Note
   ) => void;
 }
 
-const Notes = ({ notes, noteDetailsEvent }: AllNotesProps): JSX.Element => {
+const Notes = ({ noteDetailsEvent }: AllNotesProps): JSX.Element => {
+  const notes = useAppSelector((state) => state.notes.entities);
   return (
     <div className="notes">
       {notes.map((note) => (
