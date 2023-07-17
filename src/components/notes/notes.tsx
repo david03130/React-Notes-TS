@@ -1,10 +1,10 @@
 import "./notes.css";
 
-import { useSelector } from "react-redux";
-// import { useSelector, UseSelector } from "react-redux/es/hooks/useSelector";
 import { NoteElement, type Note } from "../note";
-import { noteAdded } from "../../store/reducers/notes-slice";
-import { useAppSelector } from "../../hooks/reduxHooks";
+import { addNote } from "../../store/reducers/notes-slice";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+import { Button } from "../common/button";
+import { AppThunk } from "../../store";
 
 interface AllNotesProps {
   noteDetailsEvent: (
@@ -14,7 +14,27 @@ interface AllNotesProps {
 }
 
 const Notes = ({ noteDetailsEvent }: AllNotesProps): JSX.Element => {
+  const dispatch = useAppDispatch();
   const notes = useAppSelector((state) => state.notes.entities);
+  const note: Note = {
+    id: 1,
+    title: "Thunk Test",
+    content: "Exampleeee",
+    important: true,
+  };
+
+  const addExample = (noteToAdd: Note): AppThunk => {
+    return (dispatch, getState) => {
+      const stateBefore = getState();
+      console.log(`Notes before:`);
+      console.log(stateBefore.notes.entities);
+      dispatch(addNote(noteToAdd));
+      const stateAfter = getState();
+      console.log(`Notes after:`);
+      console.log(stateAfter.notes.entities);
+    };
+  };
+
   return (
     <div className="notes">
       {notes.map((note) => (
@@ -24,6 +44,13 @@ const Notes = ({ noteDetailsEvent }: AllNotesProps): JSX.Element => {
           noteDetailsEvent={noteDetailsEvent}
         />
       ))}
+      <Button
+        text="Add test note"
+        clickEvent={(e) => {
+          e.preventDefault();
+          dispatch(addExample(note));
+        }}
+      />
     </div>
   );
 };
