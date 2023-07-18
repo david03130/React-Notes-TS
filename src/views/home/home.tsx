@@ -15,42 +15,41 @@ const defaultNote: Note = {
 };
 
 const Home = (): JSX.Element => {
-  const [notes, setNotes] = useState<Note[]>([]);
-  const [noteToShow, setNoteToShow] = useState(defaultNote);
-  const [noteDetailsVisibility, setNoteDetailsVisibility] = useState(false);
+  // const [noteToShow, setNoteToShow] = useState(defaultNote);
+  // const [noteDetailsVisibility, setNoteDetailsVisibility] = useState(false);
 
   // TODO: Aquí hay cosas que hay que quitar.
-  const getNotes = () => {
-    NoteCalls.getAll().then((response) => {
-      console.log("Promise fulfilled.");
-      setNotes(response.data);
-    });
-  };
-  useEffect(getNotes, []);
 
-  const openNoteDetails = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    newNoteToShow: Note
-  ) => {
-    e.preventDefault();
-    setNoteToShow(newNoteToShow);
-    setNoteDetailsVisibility(true);
-  };
+  // NoteCalls.create({
+  //   id: 2,
+  //   title: "Otro VSCode",
+  //   content: "Otro test desde VSCode",
+  //   important: true,
+  // }).then(() => console.log("Note created"));
 
-  const closeNoteDetails = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    setNoteDetailsVisibility(false);
-  };
+  // const openNoteDetails = (
+  //   e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  //   newNoteToShow: Note
+  // ) => {
+  //   e.preventDefault();
+  //   setNoteToShow(newNoteToShow);
+  //   setNoteDetailsVisibility(true);
+  // };
+
+  // const closeNoteDetails = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  //   e.preventDefault();
+  //   setNoteDetailsVisibility(false);
+  // };
 
   return (
     <div className="home">
       <MainMenu />
-      <Notes noteDetailsEvent={openNoteDetails} />
-      <NoteDetails
+      <Notes />
+      {/* <NoteDetails
         modalVisibility={noteDetailsVisibility}
         handleClose={closeNoteDetails}
         note={noteToShow}
-      />
+      /> */}
     </div>
   );
 };
