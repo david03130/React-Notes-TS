@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Note } from "../components/note";
 
 const baseUrl = "http://localhost:3001/api/notes";
 
-const getAll = (): Promise<Note[]> => {
+const getAll = (): Promise<AxiosResponse<Note[]>> => {
   const request = axios.get<Note[]>(baseUrl);
-  return request.then((response) => response.data);
+  return request.then((response) => response);
 };
 
 const create = (note: Note) => {
