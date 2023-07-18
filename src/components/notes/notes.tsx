@@ -1,39 +1,38 @@
 import "./notes.css";
 
 import { NoteElement, type Note } from "../note";
-import { addNote } from "../../store/reducers/notes-slice";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { Button } from "../common/button";
 import { AppThunk } from "../../store";
+import { fetchNotes } from "../../store/reducers/notes-slice";
+import { useEffect } from "react";
 
-interface AllNotesProps {
-  noteDetailsEvent: (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    note: Note
-  ) => void;
-}
-
-const Notes = ({ noteDetailsEvent }: AllNotesProps): JSX.Element => {
+const Notes = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const status = useAppSelector((state) => state.notes.status);
   const notes = useAppSelector((state) => state.notes.entities);
-  const note: Note = {
-    id: 1,
-    title: "Thunk Test",
-    content: "Exampleeee",
-    important: true,
-  };
 
-  const addExample = (noteToAdd: Note): AppThunk => {
-    return (dispatch, getState) => {
-      const stateBefore = getState();
-      console.log(`Notes before:`);
-      console.log(stateBefore.notes.entities);
-      dispatch(addNote(noteToAdd));
-      const stateAfter = getState();
-      console.log(`Notes after:`);
-      console.log(stateAfter.notes.entities);
-    };
+  const getApiNotes = () => {
+    console.log(status);
+    if (status === "idle") {
+      dispatch(fetchNotes());
+    }
   };
+  useEffect(getApiNotes, []);
+
+  // const addExample = (noteToAdd: Note): AppThunk => {
+  //   return (dispatch, getState) => {
+  //     const stateBefore = getState();
+  //     console.log(`Notes before:`);
+  //     console.log(stateBefore.notes.entities);
+  //     dispatch(addNote(noteToAdd));
+  //     const stateAfter = getState();
+  //     console.log(`Notes after:`);
+  //     console.log(stateAfter.notes.entities);
+  //   };
+  // };
+
+  console.log(notes);
 
   return (
     <div className="notes">
@@ -41,16 +40,18 @@ const Notes = ({ noteDetailsEvent }: AllNotesProps): JSX.Element => {
         <NoteElement
           key={note.id}
           note={note}
-          noteDetailsEvent={noteDetailsEvent}
+          noteDetailsEvent={() => {
+            console.log("Note details has to be implementes.");
+          }}
         />
       ))}
-      <Button
+      {/* <Button
         text="Add test note"
         clickEvent={(e) => {
           e.preventDefault();
-          dispatch(addExample(note));
+          dispatch(addNote(note));
         }}
-      />
+      /> */}
     </div>
   );
 };
