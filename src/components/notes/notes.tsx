@@ -13,9 +13,10 @@ const Notes = (): JSX.Element => {
   const notes = useAppSelector((state) => state.notes.entities);
 
   const getApiNotes = () => {
-    console.log(status);
     if (status === "idle") {
       dispatch(fetchNotes());
+    } else {
+      console.log(`Can't fetch Notes data. Notes currently in: ${status}`);
     }
   };
   useEffect(getApiNotes, []);
@@ -32,8 +33,6 @@ const Notes = (): JSX.Element => {
   //   };
   // };
 
-  console.log(notes);
-
   return (
     <div className="notes">
       {notes.map((note) => (
@@ -41,7 +40,7 @@ const Notes = (): JSX.Element => {
           key={note.id}
           note={note}
           noteDetailsEvent={() => {
-            console.log("Note details has to be implementes.");
+            console.log("Note details has to be implemented.");
           }}
         />
       ))}
