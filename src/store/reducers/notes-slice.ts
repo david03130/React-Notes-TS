@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Note } from "../../components/note";
 import ResultData from "../api-result-data";
 import NoteCalls from "../../services/note-calls";
+
 const initialState: ResultData<Note> = {
   entities: [],
   status: "idle",
@@ -18,11 +19,7 @@ const notesSlice = createSlice({
       },
       prepare(note: Note) {
         const payload = {
-          payload: {
-            ...note,
-            // TODO: Cambiar esto
-            id: 345,
-          },
+          payload: note,
         };
         return payload;
       },
@@ -49,7 +46,6 @@ const notesSlice = createSlice({
 });
 
 // Cuidado con referencia circular.
-
 export const fetchNotes = createAsyncThunk("notes/fetchNotes", async () => {
   const response = await NoteCalls.getAll();
   return response.data;
