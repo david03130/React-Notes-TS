@@ -19,10 +19,11 @@ const Home = (): JSX.Element => {
   const [noteToShow, setNoteToShow] = useState(defaultNote);
   const [noteDetailsVisibility, setNoteDetailsVisibility] = useState(false);
 
+  // TODO: Aquí hay cosas que hay que quitar.
   const getNotes = () => {
     NoteCalls.getAll().then((response) => {
       console.log("Promise fulfilled.");
-      setNotes(response);
+      setNotes(response.data);
     });
   };
   useEffect(getNotes, []);
