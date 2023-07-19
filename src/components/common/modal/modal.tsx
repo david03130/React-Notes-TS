@@ -95,7 +95,8 @@ const Modal = ({
     </div>
   );
 
-  return <ReactPortal wrapperId="portal-root">{ModalBody}</ReactPortal>;
+  // return <ReactPortal wrapperId="portal-root">{ModalBody}</ReactPortal>;
+  return ModalBody;
 };
 
 export default Modal;
