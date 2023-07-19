@@ -6,6 +6,7 @@ import { Notes } from "../../components/notes";
 import { MainMenu } from "../../layout/main-menu";
 import { type Note } from "../../components/note";
 import { NoteDetails } from "../../components/note-details";
+import { ModalsPortal } from "../../components/modals-portal";
 
 const defaultNote: Note = {
   id: 0,
@@ -45,11 +46,7 @@ const Home = (): JSX.Element => {
     <div className="home">
       <MainMenu />
       <Notes />
-      {/* <NoteDetails
-        modalVisibility={noteDetailsVisibility}
-        handleClose={closeNoteDetails}
-        note={noteToShow}
-      /> */}
+      <ModalsPortal />
     </div>
   );
 };
