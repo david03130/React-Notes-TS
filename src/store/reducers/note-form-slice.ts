@@ -7,7 +7,7 @@ interface NoteFormSliceProps {
 }
 
 const initialState: NoteFormSliceProps = {
-  visibility: true,
+  visibility: false,
   noteData: undefined,
 };
 
@@ -19,12 +19,18 @@ const noteFormSlice = createSlice({
       // This change should be immutable since Immer is in use.
       state.noteData = action.payload;
     },
-    hideNote(state) {
+    showNoteForm(state, action: PayloadAction<Note | undefined>) {
+      if (action) {
+        state.noteData = action.payload;
+      }
+      state.visibility = true;
+    },
+    hideNoteForm(state) {
       state.visibility = false;
     },
   },
 });
 
-export const { changeNote, hideNote } = noteFormSlice.actions;
+export const { changeNote, hideNoteForm, showNoteForm } = noteFormSlice.actions;
 
 export default noteFormSlice.reducer;
