@@ -1,11 +1,10 @@
 import "./notes.css";
 
-import { NoteElement, type Note } from "../note";
+import { NoteElement } from "../note";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
-import { Button } from "../common/button";
-import { AppThunk } from "../../store";
 import { fetchNotes } from "../../store/reducers/notes-slice";
 import { useEffect } from "react";
+import { showNoteForm } from "../../store/reducers/note-form-slice";
 
 const Notes = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -21,18 +20,6 @@ const Notes = (): JSX.Element => {
   };
   useEffect(getApiNotes, []);
 
-  // const addExample = (noteToAdd: Note): AppThunk => {
-  //   return (dispatch, getState) => {
-  //     const stateBefore = getState();
-  //     console.log(`Notes before:`);
-  //     console.log(stateBefore.notes.entities);
-  //     dispatch(addNote(noteToAdd));
-  //     const stateAfter = getState();
-  //     console.log(`Notes after:`);
-  //     console.log(stateAfter.notes.entities);
-  //   };
-  // };
-
   return (
     <div className="notes">
       {notes.map((note) => (
@@ -40,19 +27,24 @@ const Notes = (): JSX.Element => {
           key={note.id}
           note={note}
           noteDetailsEvent={() => {
-            console.log("Note details has to be implemented.");
+            dispatch(showNoteForm(note));
           }}
         />
       ))}
-      {/* <Button
-        text="Add test note"
-        clickEvent={(e) => {
-          e.preventDefault();
-          dispatch(addNote(note));
-        }}
-      /> */}
     </div>
   );
 };
 
 export default Notes;
+
+// const addExample = (noteToAdd: Note): AppThunk => {
+//   return (dispatch, getState) => {
+//     const stateBefore = getState();
+//     console.log(`Notes before:`);
+//     console.log(stateBefore.notes.entities);
+//     dispatch(addNote(noteToAdd));
+//     const stateAfter = getState();
+//     console.log(`Notes after:`);
+//     console.log(stateAfter.notes.entities);
+//   };
+// };
