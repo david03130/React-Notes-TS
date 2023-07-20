@@ -2,32 +2,20 @@ import "./main-menu.css";
 
 import { SmallButton } from "../../components/common/small-button";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-import { NoteForm } from "../../components/note-form";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { showNoteForm } from "../../store/reducers/note-form-slice";
 
 const MainMenu = (): JSX.Element => {
-  const [visibleModal, setVisibleModal] = useState(false);
-  const showModal = () => setVisibleModal(true);
-  const hideModal = () => setVisibleModal(false);
-
-  const openNoteFormHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const dispatch = useAppDispatch();
+  const openNoteFormModal = (e: React.MouseEvent<Element, MouseEvent>) => {
     e.preventDefault();
-    showModal();
-  };
-
-  const closeNoteFormHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    hideModal();
+    dispatch(showNoteForm());
   };
 
   return (
     <div className="main-menu">
       <h1>Notes</h1>
-      <SmallButton icon={faAdd} clickEvent={openNoteFormHandler} />
-      <NoteForm
-        modalVisibility={visibleModal}
-        handleClose={closeNoteFormHandler}
-      />
+      <SmallButton icon={faAdd} clickEvent={openNoteFormModal} />
     </div>
   );
 };
