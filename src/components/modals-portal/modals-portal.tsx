@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
-import { hideNote } from "../../store/reducers/note-form-slice";
+import { hideNoteForm } from "../../store/reducers/note-form-slice";
 import { ReactPortal } from "../common/react-portal";
 import { NoteForm } from "../note-form";
 
@@ -13,8 +13,9 @@ const ModalsPortal = () => {
           modalVisibility={noteForm.visibility}
           handleClose={(e) => {
             e.preventDefault();
-            dispatch(hideNote());
+            dispatch(hideNoteForm());
           }}
+          noteData={noteForm.noteData}
         />
       </ReactPortal>
     </div>
