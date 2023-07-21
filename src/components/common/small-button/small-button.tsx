@@ -18,7 +18,7 @@ const SmallButton = ({
   clickEvent,
   className,
 }: SmallButtonProps): JSX.Element => {
-  let classes = "smallButton " + className;
+  let classes = className ? `smallButton ${className}` : "smallButton ";
 
   if (!transparent) {
     classes += " colored";
