@@ -2,8 +2,11 @@ import "./note-details.css";
 
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
-import { Modal } from "../common/modal";
+import { Modal, ModalActionButton } from "../common/modal";
 import Note from "../note/note";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { hideNoteDetails } from "../../store/reducers/note-details-slice";
+import { showNoteForm } from "../../store/reducers/note-form-slice";
 
 interface NoteDetailsProps {
   note: Note | undefined;
@@ -24,6 +27,17 @@ const NoteDetails = ({
   handleClose,
 }: NoteDetailsProps) => {
   let extraIconsArray: FontAwesomeIconProps[] = [];
+  const dispatch = useAppDispatch();
+
+  const modalEditButton: ModalActionButton = {
+    text: "Edit",
+    clickEvent: (e) => {
+      e.preventDefault();
+      dispatch(hideNoteDetails());
+      dispatch(showNoteForm(note));
+    },
+    position: 0,
+  };
 
   if (note.important) {
     const importantIcon: FontAwesomeIconProps = {
@@ -39,6 +53,7 @@ const NoteDetails = ({
       isOpen={modalVisibility}
       handleClose={handleClose}
       extraIcons={extraIconsArray}
+      modalButtons={[modalEditButton]}
     >
       <p>{note.content}</p>
     </Modal>
