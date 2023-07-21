@@ -36,7 +36,7 @@ const notesSlice = createSlice({
       .addCase(fetchNotes.fulfilled, (state, action) => {
         state.status = "complete";
         // Add any fetched notes to the array
-        state.entities = state.entities.concat(action.payload);
+        state.entities = action.payload;
       })
       .addCase(fetchNotes.rejected, (state, action) => {
         state.status = "failed";
