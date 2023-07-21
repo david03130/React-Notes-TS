@@ -1,11 +1,13 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import notesReducer from "./reducers/notes-slice";
 import noteFormReducer from "./reducers/note-form-slice";
+import noteDetailsReducer from "./reducers/note-details-slice";
 
 const store = configureStore({
   reducer: {
     notes: notesReducer,
     noteFormModal: noteFormReducer,
+    noteDetailsModal: noteDetailsReducer,
   },
 });
 
