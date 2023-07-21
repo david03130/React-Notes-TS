@@ -4,7 +4,7 @@ import { NoteElement } from "../note";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { fetchNotes } from "../../store/reducers/notes-slice";
 import { useEffect } from "react";
-import { showNoteForm } from "../../store/reducers/note-form-slice";
+import { showNoteDetails } from "../../store/reducers/note-details-slice";
 
 const Notes = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ const Notes = (): JSX.Element => {
           key={note.id}
           note={note}
           noteDetailsEvent={() => {
-            dispatch(showNoteForm(note));
+            dispatch(showNoteDetails(note));
           }}
         />
       ))}
