@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Note } from "../note";
 import NoteCalls from "../../services/note-calls";
 import { ModalActionButton } from "../common/modal";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { fetchNotes } from "../../store/reducers/notes-slice";
 
 interface NoteFormProps {
   modalVisibility: boolean;
@@ -25,13 +27,22 @@ const NoteForm = ({
 }: NoteFormProps): JSX.Element => {
   const [currentNote, setCurrentNote] = useState<Note>(defaultNote);
   const isExistingNote = currentNote.id ? true : false;
-
+  const dispatch = useAppDispatch();
+  // console.log("Render component");
+  
   useEffect(() => {
     setCurrentNote(noteData ?? defaultNote);
+    // console.log("useEffect execution")
   }, [noteData]);
 
   const handleNoteUpdate = () => {
-    console.log("Time to implement update!");
+    NoteCalls.update(currentNote)
+      .then(() => {
+        console.log("Note updated!");
+      })
+      .catch((reason) => {
+        throw new Error(reason);
+      });
   };
 
   const handleNoteSave = () => {
@@ -40,7 +51,7 @@ const NoteForm = ({
         console.log("Note saved!");
       })
       .catch(() => {
-        throw new Error("Error when saving note!");
+        throw new Error("Error when saving note.");
       });
   };
 
@@ -51,6 +62,7 @@ const NoteForm = ({
     } else {
       handleNoteSave();
     }
+    dispatch(fetchNotes());
     handleClose(e);
   };
 
