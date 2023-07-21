@@ -8,8 +8,14 @@ const getAll = (): Promise<AxiosResponse<Note[]>> => {
   return request.then((response) => response);
 };
 
-const create = (note: Note) => {
-  return axios.post<Note>(baseUrl, note);
+const update = (note: Note): Promise<AxiosResponse<Note>> => {
+  const request = axios.put<Note>(`${baseUrl}/${note.id}`, note);
+  return request;
 };
 
-export default { getAll, create };
+const create = (note: Note): Promise<AxiosResponse<Note>> => {
+  const request = axios.post<Note>(baseUrl, note);
+  return request;
+};
+
+export default { getAll, update, create };
