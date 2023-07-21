@@ -6,13 +6,20 @@ import { Modal } from "../common/modal";
 import Note from "../note/note";
 
 interface NoteDetailsProps {
-  note: Note;
+  note: Note | undefined;
   modalVisibility: boolean;
   handleClose: React.MouseEventHandler;
 }
 
+const defaultNote: Note = {
+  id: 0,
+  title: "",
+  content: "",
+  important: false,
+};
+
 const NoteDetails = ({
-  note,
+  note = defaultNote,
   modalVisibility,
   handleClose,
 }: NoteDetailsProps) => {
