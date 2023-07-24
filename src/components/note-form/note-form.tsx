@@ -29,41 +29,43 @@ const NoteForm = ({
   const isExistingNote = currentNote.id ? true : false;
   const dispatch = useAppDispatch();
   // console.log("Render component");
-  
+
   useEffect(() => {
     setCurrentNote(noteData ?? defaultNote);
     // console.log("useEffect execution")
   }, [noteData]);
 
   const handleNoteUpdate = () => {
-    NoteCalls.update(currentNote)
-      .then(() => {
-        console.log("Note updated!");
-      })
-      .catch((reason) => {
-        throw new Error(reason);
-      });
+    return NoteCalls.update(currentNote);
   };
 
   const handleNoteSave = () => {
-    NoteCalls.create(currentNote)
-      .then(() => {
-        console.log("Note saved!");
-      })
-      .catch(() => {
-        throw new Error("Error when saving note.");
-      });
+    return NoteCalls.create(currentNote);
   };
 
   const handleSaveButton = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (isExistingNote) {
-      handleNoteUpdate();
+      handleNoteUpdate()
+        .then(() => {
+          console.log("Note updated!");
+          dispatch(fetchNotes());
+          handleClose(e);
+        })
+        .catch((reason) => {
+          throw new Error(reason);
+        });
     } else {
-      handleNoteSave();
+      handleNoteSave()
+        .then(() => {
+          console.log("Note saved!");
+          dispatch(fetchNotes());
+          handleClose(e);
+        })
+        .catch(() => {
+          throw new Error("Error when saving note.");
+        });
     }
-    dispatch(fetchNotes());
-    handleClose(e);
   };
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
