@@ -26,8 +26,8 @@ const Notes = (): JSX.Element => {
       {notes.entities
         .filter(
           (note) =>
-            (notes.notesToShow == "important" && note.important) ||
-            notes.notesToShow == "all"
+            (notes.notesToShow === "important" && note.important) ||
+            notes.notesToShow === "all"
         )
         .map((note) => (
           <NoteElement
