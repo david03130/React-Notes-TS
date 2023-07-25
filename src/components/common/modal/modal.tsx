@@ -1,5 +1,4 @@
 import "./modal.css";
-import { ReactPortal } from "../react-portal";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { SmallButton } from "../small-button";
 import { Button } from "../button";
@@ -39,7 +38,7 @@ const Modal = ({
 
   const ModalBody = (
     <div className="modal">
-      <div className="modal__body">
+      <div className="modal__content">
         <div className="modal__header">
           <div className="modal__header__left-section">
             <h3>{modalTitle}</h3>
@@ -80,8 +79,7 @@ const Modal = ({
             />
           </div>
         </div>
-        <div className="modal__content">{children}</div>
-        {modalButtons ? <hr className="modal__separator" /> : ""}
+        <div className="modal__body">{children}</div>
         <div className="modal__footer">
           {modalButtons?.sort(buttonsSortAsc).map((button) => (
             <Button
