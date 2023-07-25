@@ -1,4 +1,4 @@
-import "./note.css";
+import "./note-element.css";
 
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
