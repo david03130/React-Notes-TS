@@ -3,10 +3,17 @@ import { Note } from "../../components/note";
 import ResultData from "../api-result-data";
 import NoteCalls from "../../services/note-calls";
 
-const initialState: ResultData<Note> = {
+export type NotesToShow = "all" | "important";
+
+interface NotesResult extends ResultData<Note> {
+  notesToShow: NotesToShow;
+}
+
+const initialState: NotesResult = {
   entities: [],
   status: "idle",
   error: null,
+  notesToShow: "all",
 };
 
 const notesSlice = createSlice({
@@ -23,6 +30,9 @@ const notesSlice = createSlice({
         };
         return payload;
       },
+    },
+    setNotesToShow(state, action: PayloadAction<NotesToShow>) {
+      state.notesToShow = action.payload;
     },
     // simpleAddNote(state, action: PayloadAction<Note, string>) {
     //   state.entities.push(action.payload);
@@ -51,6 +61,6 @@ export const fetchNotes = createAsyncThunk("notes/fetchNotes", async () => {
   return response.data;
 });
 
-export const { addNote } = notesSlice.actions;
+export const { addNote, setNotesToShow } = notesSlice.actions;
 
 export default notesSlice.reducer;
