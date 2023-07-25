@@ -1,7 +1,6 @@
 .note {
   display: inline-block;
-  min-width: 260px;
-  max-width: 350px;
+  width: 260px;
   min-height: 130px;
   height: fit-content;
   margin: 10px;
