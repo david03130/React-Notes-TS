@@ -8,29 +8,36 @@ import { showNoteDetails } from "../../store/reducers/note-details-slice";
 
 const Notes = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const status = useAppSelector((state) => state.notes.status);
-  const notes = useAppSelector((state) => state.notes.entities);
+  const notes = useAppSelector((state) => state.notes);
 
   const getApiNotes = () => {
-    if (status === "idle") {
+    if (notes.status === "idle") {
       dispatch(fetchNotes());
     } else {
-      console.log(`Can't fetch Notes data. Notes currently in: ${status}`);
+      console.log(
+        `Can't fetch Notes data. Notes currently in: ${notes.status}`
+      );
     }
   };
   useEffect(getApiNotes, []);
 
   return (
     <div className="notes">
-      {notes.map((note) => (
-        <NoteElement
-          key={note.id}
-          note={note}
-          noteDetailsEvent={() => {
-            dispatch(showNoteDetails(note));
-          }}
-        />
-      ))}
+      {notes.entities
+        .filter(
+          (note) =>
+            (notes.notesToShow == "important" && note.important) ||
+            notes.notesToShow == "all"
+        )
+        .map((note) => (
+          <NoteElement
+            key={note.id}
+            note={note}
+            noteDetailsEvent={() => {
+              dispatch(showNoteDetails(note));
+            }}
+          />
+        ))}
     </div>
   );
 };
