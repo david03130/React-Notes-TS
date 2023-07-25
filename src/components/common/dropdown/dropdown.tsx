@@ -9,11 +9,21 @@ export interface DropdownProps {
   dropdownName: string;
   dropdownId: string;
   options: DropdownOption[];
+  className?: string;
 }
 
-const Dropdown = ({ dropdownName, dropdownId, options }: DropdownProps) => {
+const Dropdown = ({
+  dropdownName,
+  dropdownId,
+  options,
+  className,
+}: DropdownProps) => {
   return (
-    <select name={dropdownName} id={dropdownId}>
+    <select
+      className={`dropdown ${className ?? ""}`}
+      name={dropdownName}
+      id={dropdownId}
+    >
       {options.map((option) => {
         return (
           <option key={crypto.randomUUID()} value={option.value}>
