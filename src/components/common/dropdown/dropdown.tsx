@@ -10,6 +10,7 @@ export interface DropdownProps {
   dropdownId: string;
   options: DropdownOption[];
   className?: string;
+  changeEvent: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
 const Dropdown = ({
@@ -17,12 +18,14 @@ const Dropdown = ({
   dropdownId,
   options,
   className,
+  changeEvent,
 }: DropdownProps) => {
   return (
     <select
       className={`dropdown ${className ?? ""}`}
       name={dropdownName}
       id={dropdownId}
+      onChange={changeEvent}
     >
       {options.map((option) => {
         return (
