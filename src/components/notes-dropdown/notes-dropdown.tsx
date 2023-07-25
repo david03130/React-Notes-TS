@@ -1,3 +1,4 @@
+import "./notes-dropdown.css";
 import Dropdown, { DropdownOption } from "../common/dropdown";
 
 const NotesDropdown = () => {
@@ -7,6 +8,7 @@ const NotesDropdown = () => {
   ];
   return (
     <Dropdown
+      className="notes-dropdown"
       dropdownName="notes_importance"
       dropdownId="notes_importance"
       options={dropdownOptions}
