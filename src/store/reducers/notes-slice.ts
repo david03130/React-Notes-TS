@@ -40,7 +40,7 @@ const notesSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchNotes.pending, (state, action) => {
+      .addCase(fetchNotes.pending, (state) => {
         state.status = "pending";
       })
       .addCase(fetchNotes.fulfilled, (state, action) => {
