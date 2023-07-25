@@ -7,6 +7,8 @@ import Note from "../note/note";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { hideNoteDetails } from "../../store/reducers/note-details-slice";
 import { showNoteForm } from "../../store/reducers/note-form-slice";
+import NoteCalls from "../../services/note-calls";
+import { fetchNotes } from "../../store/reducers/notes-slice";
 
 interface NoteDetailsProps {
   note: Note | undefined;
@@ -39,6 +41,18 @@ const NoteDetails = ({
     position: 0,
   };
 
+  const modalDeleteButton: ModalActionButton = {
+    text: "Delete",
+    clickEvent: (e) => {
+      e.preventDefault();
+      NoteCalls.deleteNote(note.id.toString()).then(() => {
+        dispatch(hideNoteDetails());
+        dispatch(fetchNotes());
+      });
+    },
+    position: 1,
+  };
+
   if (note.important) {
     const importantIcon: FontAwesomeIconProps = {
       icon: faExclamation,
@@ -53,7 +67,7 @@ const NoteDetails = ({
       isOpen={modalVisibility}
       handleClose={handleClose}
       extraIcons={extraIconsArray}
-      modalButtons={[modalEditButton]}
+      modalButtons={[modalEditButton, modalDeleteButton]}
     >
       <p>{note.content}</p>
     </Modal>
