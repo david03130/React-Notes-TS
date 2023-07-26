@@ -17,6 +17,8 @@ const NoteElement = ({
   note,
   noteDetailsEvent,
 }: NoteElementProps): JSX.Element => {
+  const maxLength = 180;
+  
   const clickEvent = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     noteDetailsEvent(e, note);
   };
@@ -34,7 +36,11 @@ const NoteElement = ({
           ""
         )}
       </div>
-      <p className="note__content">{note.content}</p>
+      <p className="note__content">
+        {note.content.length > maxLength
+          ? note.content.substring(0, maxLength) + "..."
+          : note.content}
+      </p>
     </div>
   );
 };
