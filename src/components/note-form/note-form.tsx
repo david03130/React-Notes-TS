@@ -29,11 +29,9 @@ const NoteForm = ({
   const [currentNote, setCurrentNote] = useState<Note>(defaultNote);
   const isExistingNote = currentNote.id ? true : false;
   const dispatch = useAppDispatch();
-  // console.log("Render component");
 
   useEffect(() => {
     setCurrentNote(noteData ?? defaultNote);
-    // console.log("useEffect execution")
   }, [noteData]);
 
   const handleNoteUpdate = () => {
@@ -49,7 +47,6 @@ const NoteForm = ({
     if (isExistingNote) {
       handleNoteUpdate()
         .then(() => {
-          console.log("Note updated!");
           dispatch(fetchNotes());
           handleClose(e);
         })
@@ -59,8 +56,8 @@ const NoteForm = ({
     } else {
       handleNoteSave()
         .then(() => {
-          console.log("Note saved!");
           dispatch(fetchNotes());
+          setCurrentNote(defaultNote);
           handleClose(e);
         })
         .catch(() => {
