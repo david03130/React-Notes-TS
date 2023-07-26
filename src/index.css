@@ -50,6 +50,7 @@ p {
   --bg-primary-color: white;
   --bg-secondary-color: antiquewhite;
   --highlight-color: rgb(243, 202, 148);
+  --highlight-secondary-color: rgb(104, 88, 66);
 
   /* Fonts */
   --text-normal: 1.2rem;
