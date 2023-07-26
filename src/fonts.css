@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto-Regular"),
+    url("./fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Jost";
+  src: local("Jost-Medium"), url("./fonts/Jost-Medium.ttf") format("truetype");
+}
