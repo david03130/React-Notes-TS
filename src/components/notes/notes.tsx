@@ -10,6 +10,7 @@ const Notes = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const notes = useAppSelector((state) => state.notes);
 
+  // TODO: This gives a warning because of dependencies
   const getApiNotes = () => {
     if (notes.status === "idle") {
       dispatch(fetchNotes());
