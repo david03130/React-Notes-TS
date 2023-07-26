@@ -5,6 +5,11 @@
 }
 
 @font-face {
-  font-family: "Jost";
+  font-family: "Jost Regular";
+  src: local("Jost-Regular"), url("./fonts/Jost-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Jost Medium";
   src: local("Jost-Medium"), url("./fonts/Jost-Medium.ttf") format("truetype");
 }
