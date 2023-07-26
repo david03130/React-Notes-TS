@@ -6,6 +6,7 @@ import NoteCalls from "../../services/note-calls";
 import { ModalActionButton } from "../common/modal";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { fetchNotes } from "../../store/reducers/notes-slice";
+import { Switch } from "../common/switch";
 
 interface NoteFormProps {
   modalVisibility: boolean;
@@ -113,10 +114,9 @@ const NoteForm = ({
             onChange={handleContentChange}
           />
         </div>
-        <div className="note-input-area note__important-checkbox">
-          <input
-            type="checkbox"
-            checked={currentNote.important}
+        <div className="note-input-area note__important-switch">
+          <Switch
+            isChecked={currentNote.important}
             onChange={handleImportanceChange}
           />
           <h6>Important</h6>

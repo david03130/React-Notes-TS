@@ -26,6 +26,11 @@
   resize: vertical;
 }
 
-.note__important-checkbox {
+.note__important-switch {
   display: flex;
+  align-items: center;
+}
+
+.note__important-switch > h6 {
+  margin-left: 10px;
 }
