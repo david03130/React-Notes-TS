@@ -24,7 +24,7 @@ const NoteElement = ({
   return (
     <div className="note" onClick={clickEvent}>
       <div className="note__header">
-        <p className="note__header__title">{note.title}</p>
+        <h2 className="note__header__title">{note.title}</h2>
         {note.important ? (
           <FontAwesomeIcon
             className="note__header__important"

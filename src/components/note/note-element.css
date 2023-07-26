@@ -23,11 +23,6 @@
   margin: 10px 10px 10px 0px;
 }
 
-.note__header__title {
-  font-size: larger;
-  font-weight: bolder;
-}
-
 .note__header__important {
   padding: 7px;
   width: 15px;
